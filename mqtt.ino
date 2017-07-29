@@ -40,11 +40,11 @@ void MQTT_disconnect_callback(AsyncMqttClientDisconnectReason reason) {
 }
 
 void MQTT_subscribe_callback(uint16_t packetId, uint8_t qos) {
-  Serial.println("MQTT subscribed");
+  Serial.println("MQTT subscribed successfully");
 }
 
 void MQTT_unsubscribe_callback(uint16_t packetId) {
-  Serial.println("MQTT unsubscribed");
+  Serial.println("MQTT unsubscribed successfully");
 }
 
 void MQTT_message_callback(char* topic, char* payload, AsyncMqttClientMessageProperties properties, size_t len, size_t index, size_t total) {
@@ -85,5 +85,5 @@ void MQTT_message_callback(char* topic, char* payload, AsyncMqttClientMessagePro
 }
 
 void MQTT_publish_callback(uint16_t packetId) {
-  Serial.println("MQTT publish");
+  Serial.println("MQTT published successfully");
 }

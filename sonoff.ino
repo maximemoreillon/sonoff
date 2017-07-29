@@ -1,13 +1,3 @@
-/*
- * MQTT OTA SONOFF v3
- * Maxime MOREILLON
- * Changelog
- * v3
- * - Now using defines instead of const
- * v2
- * - Now using Async MQTT library
- */
-
 // Libraries
 #include <ESP8266WiFi.h> // Main ESP8266 library
 #include <ArduinoOTA.h> // OTA update library
@@ -16,7 +6,7 @@
 #include <Ticker.h> // Used when reconecting MQTT upon wifi drop
 
 #include "credentials.h";
-#include "living_room_light_config.h";
+#include "soldering_iron_config.h";
 
 // Wifi
 Ticker wifi_reconnect_timer;
