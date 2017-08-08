@@ -52,13 +52,4 @@ void setup()
 void loop() {
   ArduinoOTA.handle();
   read_button();
-
-  // Debugging
-  static boolean debugged;
-  if(millis() > 10000 && !debugged){
-    debugged = true;
-    Serial.println("debugging");
-    MQTT_client.publish(MQTT_DEBUG_TOPIC, MQTT_QOS, MQTT_RETAIN, "ON");
-    MQTT_client.publish(MQTT_DEBUG_TOPIC, MQTT_QOS, MQTT_RETAIN, "OFF");
-  }
 }
