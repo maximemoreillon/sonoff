@@ -79,6 +79,20 @@ void MQTT_message_callback(char* topic, char* payload, AsyncMqttClientMessagePro
     digitalWrite(LED_PIN, HIGH); // LED is active LOW
     relay_state = "OFF";
   }
+  else if(strncmp(payload, "TOGGLE", len) == 0){
+    if(strcmp(relay_state,"OFF") == 0){
+      Serial.println("Relay ON");
+      digitalWrite(RELAY_PIN, HIGH);
+      digitalWrite(LED_PIN, LOW); // LED is active LOW
+      relay_state = "ON";
+    }
+    else {
+      Serial.println("Relay OFF");
+      digitalWrite(RELAY_PIN, LOW);
+      digitalWrite(LED_PIN, HIGH); // LED is active LOW
+      relay_state = "OFF";
+    }
+  }
 
   Serial.println("MQTT publish of relay state");
   MQTT_client.publish(MQTT_STATUS_TOPIC, MQTT_QOS, MQTT_RETAIN, relay_state);
