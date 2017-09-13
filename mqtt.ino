@@ -80,6 +80,7 @@ void MQTT_message_callback(char* topic, char* payload, AsyncMqttClientMessagePro
     relay_state = "OFF";
   }
   else if(strncmp(payload, "TOGGLE", len) == 0){
+    Serial.println("Toggling relay state");
     if(strcmp(relay_state,"OFF") == 0){
       Serial.println("Relay ON");
       digitalWrite(RELAY_PIN, HIGH);
