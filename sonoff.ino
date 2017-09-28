@@ -9,7 +9,8 @@
 //#include "soldering_iron_config.h";
 //#include "living_room_light_config.h";
 //#include "bedroom_light_config.h";
-#include "bedroom_fan_config.h";
+//#include "bedroom_fan_config.h";
+#include "toilet_light_config.h";
 
 // Wifi
 Ticker wifi_reconnect_timer;
