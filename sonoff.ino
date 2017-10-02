@@ -1,3 +1,8 @@
+/*
+ * Board type: Generic ESP8266
+ */
+
+
 // Libraries
 #include <ESP8266WiFi.h> // Main ESP8266 library
 #include <ArduinoOTA.h> // OTA update library
