@@ -1,4 +1,7 @@
 /*
+ * CUSTOM SONOFF FIRMWARE
+ * Maxime MOREILLON
+ * 
  * Board type: Generic ESP8266
  */
 

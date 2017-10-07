@@ -1,5 +1,6 @@
 void IO_setup(){
 
+  pinMode(BUTTON_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
   pinMode(RELAY_PIN, OUTPUT);
 
