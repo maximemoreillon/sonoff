@@ -3,6 +3,8 @@
  * Maxime MOREILLON
  * 
  * Board type: Generic ESP8266
+ * Flash mode: DIO (DOUT for newer SONOFF)
+ * Flash size: 1M (64 SPIFFS)
  */
 
 
