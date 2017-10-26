@@ -23,4 +23,6 @@ Additionally, the built-in button and LED have been set to toggle and display th
 
 In other words, only the flash size needs to be changed
 
+Note: Newer SONOFFs require the flash mode to be changed to DOUT.
+
 
