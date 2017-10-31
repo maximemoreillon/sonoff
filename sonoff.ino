@@ -42,7 +42,7 @@ Ticker MQTT_reconnect_timer;
 #define BUTTON_PIN 0
 
 // Other variables
-char* relay_state = RELAY_INITIAL_STATE;
+char* relay_state = INITIAL_STATE;
 
 void setup()
 {
