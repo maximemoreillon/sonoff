@@ -15,7 +15,7 @@ Additionally, the built-in button and LED have been set to toggle and display th
 * Flash Mode: DIO
 * Flash Frequency: 40MHz
 * CPU Frequency: 80MHz
-* Flash Size: 1M (64K SPIFFS)
+* Flash Size: **1M (64K SPIFFS)**
 * Debug Port: Disabled
 * Debug Level: None
 * Reset Method: ck
