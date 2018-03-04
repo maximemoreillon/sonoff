@@ -26,6 +26,8 @@ void MQTT_connect_callback(bool sessionPresent) {
 
   // Subscribing to command topics
   MQTT_client.subscribe(MQTT_COMMAND_TOPIC, MQTT_QOS);
+  MQTT_client.subscribe(MQTT_MYCROFT_ON_COMMAND_TOPIC, MQTT_QOS);
+  MQTT_client.subscribe(MQTT_MYCROFT_OFF_COMMAND_TOPIC, MQTT_QOS);
 
   // Update status
   MQTT_client.publish(MQTT_STATUS_TOPIC, MQTT_QOS, MQTT_RETAIN, relay_state);
@@ -67,13 +69,13 @@ void MQTT_message_callback(char* topic, char* payload, AsyncMqttClientMessagePro
   Serial.print("  total: ");
   Serial.println(total);
 
-  if(strncmp(payload, "ON", len) == 0){
+  if(strncmp(payload, "ON", len) == 0 || strncmp(payload, "on", len) == 0){
     Serial.println("Relay ON");
     digitalWrite(RELAY_PIN, HIGH);
     digitalWrite(LED_PIN, LOW); // LED is active LOW
     relay_state = "ON";
   }
-  else if(strncmp(payload, "OFF", len) == 0){
+  else if(strncmp(payload, "OFF", len) == 0 || strncmp(payload, "off", len) == 0){
     Serial.println("Relay OFF");
     digitalWrite(RELAY_PIN, LOW);
     digitalWrite(LED_PIN, HIGH); // LED is active LOW
