@@ -26,8 +26,6 @@ void MQTT_connect_callback(bool sessionPresent) {
 
   // Subscribing to command topics
   MQTT_client.subscribe(MQTT_COMMAND_TOPIC, MQTT_QOS);
-  MQTT_client.subscribe(MQTT_MYCROFT_ON_COMMAND_TOPIC, MQTT_QOS);
-  MQTT_client.subscribe(MQTT_MYCROFT_OFF_COMMAND_TOPIC, MQTT_QOS);
 
   // Update status
   MQTT_client.publish(MQTT_STATUS_TOPIC, MQTT_QOS, MQTT_RETAIN, relay_state);

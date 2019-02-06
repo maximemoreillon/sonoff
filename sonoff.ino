@@ -3,7 +3,7 @@
  * Maxime MOREILLON
  * 
  * Board type: Generic ESP8266
- * Flash mode: DIO (DOUT for newer SONOFF)
+ * Flash mode: DOUT
  * Flash size: 1M (64 SPIFFS)
  */
 
@@ -16,7 +16,9 @@
 #include <Ticker.h> // Used when reconecting MQTT upon wifi drop
 
 #include "credentials.h";
-#include "living_room_light_config.h";
+//#include "sonoff_kitchen_light_nagoya.h";
+//#include "sonoff_living_light_nagoya.h";
+#include "sonoff_bedroom_light_nagoya.h";
 
 // Wifi
 Ticker wifi_reconnect_timer;
