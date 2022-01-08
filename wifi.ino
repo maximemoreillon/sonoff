@@ -1,34 +1,40 @@
 void wifi_setup() {
 
-  // Callbacks
-  wifi_connect_handler = WiFi.onStationModeGotIP(wifi_connect_callback);
-  wifi_disconnect_handler = WiFi.onStationModeDisconnected(wifi_disconnect_callback);
+  Serial.println(F("[WiFi] Wifi starting"));
 
-  // Settings
   WiFi.hostname(HOSTNAME);
   WiFi.mode(WIFI_STA);
-}
-
-void wifi_connect() {
-  Serial.print("Wifi connecting to ");
-  Serial.print(WIFI_SSID);
-  Serial.println("...");
-  
-  wifi_reconnect_timer.detach();
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 }
 
-void wifi_connect_callback(const WiFiEventStationModeGotIP& event){
-  Serial.print("Wifi connected, IP address: ");
-  Serial.println(WiFi.localIP());
-  
-  MQTT_connect();
-}
 
-void wifi_disconnect_callback(const WiFiEventStationModeDisconnected& event){
-  Serial.println("Wifi disconnected");
-  
-  MQTT_reconnect_timer.detach(); // ensure we don't reconnect to MQTT while reconnecting to Wi-Fi
-  wifi_reconnect_timer.attach(2, wifi_connect);
-}
+void wifi_connection_manager(){
 
+  static int wifi_connected = -1; // 1: connected, 0: disconnected, -1: unknown
+  
+  if(WiFi.status() != WL_CONNECTED) {
+    // Wifi currently disconnected
+    if(wifi_connected != 0){
+      // Wifi connection status changed to "disconnected"
+      wifi_connected = 0;
+      Serial.println(F("[WiFi] Disconnected"));
+    }
+
+    // LED management: Blink LED if disconnected
+    if( (millis()/500)%2 == 0) digitalWrite(LED_PIN, LOW); // LED is active LOW
+    else digitalWrite(LED_PIN, HIGH); // LED is active LOW
+    
+  }
+  else {
+    if(wifi_connected != 1){
+      // Wifi connection status changed to "connected"
+      wifi_connected = 1;
+      Serial.print(F("[WiFi] Connected, IP: "));
+      Serial.println(WiFi.localIP());
+
+      // Set LED the right state if connected
+      set_LED();
+    }
+  }
+  
+}
